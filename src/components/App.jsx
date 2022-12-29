@@ -39,6 +39,8 @@ export class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const countTotal = this.countTotalFeedback();
+
     return (
       <>
         <GlobalStyle />
@@ -46,12 +48,12 @@ export class App extends Component {
           options={Object.keys(this.state)}
           onLeaveFeedback={this.onLeaveFeedback}
         />
-        {this.countTotalFeedback() ? (
+        {countTotal ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={this.countTotalFeedback()}
+            total={countTotal}
             positivePercentage={this.countPositiveFeedbackPercentage()}
           />
         ) : (
