@@ -3,6 +3,7 @@ import { GlobalStyle } from './GlobalStyle';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
+import { Container } from './Container';
 
 export class App extends Component {
   state = {
@@ -27,10 +28,8 @@ export class App extends Component {
     return positiveFeedbackPercentage;
   };
 
-  // onLeaveFeedback = (label) =>
-  //     [label]: state.label + 1;
-
   onLeaveFeedback = e => {
+    e.preventDefault();
     const { name } = e.target;
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
@@ -42,7 +41,7 @@ export class App extends Component {
     const countTotal = this.countTotalFeedback();
 
     return (
-      <>
+      <Container>
         <GlobalStyle />
         <FeedbackOptions
           options={Object.keys(this.state)}
@@ -59,7 +58,7 @@ export class App extends Component {
         ) : (
           <Notification message="There is no feedback" />
         )}
-      </>
+      </Container>
     );
   }
 }

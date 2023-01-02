@@ -1,4 +1,6 @@
 import { Section } from '../Section/Section';
+import PropTypes from 'prop-types';
+import { Item } from './Statistics.styled';
 export const Statistics = ({
   good,
   neutral,
@@ -8,11 +10,19 @@ export const Statistics = ({
 }) => {
   return (
     <Section title="Statistics">
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total: {total}</p>
-      <p>Positive feedback: {positivePercentage} %</p>
+      <Item>Good: {good}</Item>
+      <Item>Neutral: {neutral}</Item>
+      <Item>Bad: {bad}</Item>
+      <Item>Total: {total}</Item>
+      <Item>Positive feedback: {positivePercentage} %</Item>
     </Section>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };

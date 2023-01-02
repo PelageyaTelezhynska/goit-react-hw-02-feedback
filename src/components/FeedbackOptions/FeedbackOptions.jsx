@@ -1,17 +1,24 @@
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import { Section } from '../Section/Section';
+import { OptionList, Button } from './FeedbackOptions.styled';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <Section title="Please leave feedback">
-      <ul>
+      <OptionList>
         {options.map(option => (
           <li key={nanoid()}>
-            <button type="submit" name={option} onClick={onLeaveFeedback}>
+            <Button type="button" name={option} onClick={onLeaveFeedback}>
               {option}
-            </button>
+            </Button>
           </li>
         ))}
-      </ul>
+      </OptionList>
     </Section>
   );
+};
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
